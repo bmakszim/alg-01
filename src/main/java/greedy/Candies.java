@@ -14,7 +14,9 @@ public class Candies {
 
     public static long candies(int n, List<Integer> arr) {
         long[] candies = new long[n];
-        Arrays.fill(candies, 1); // Give each child at least one candy
+
+        // Give each child at least one candy
+        Arrays.fill(candies, 1);
 
         // Forward pass: ensure each child has more candies than the previous one if their rating is higher
         for (int i = 1; i < n; i++) {

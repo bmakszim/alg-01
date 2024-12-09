@@ -1,10 +1,8 @@
 # Algoritmusok és adatszerkezetek gyakorlat házi feladat
 ## Makszim Balázs Imre ENSGO3
-## Candies
+
 Feladat eredeti leírása:
 https://www.hackerrank.com/challenges/candies/problem
-
-Magyar leírás:
 
 ## Feladat: Cukorkák osztása
 
@@ -27,3 +25,23 @@ Egészítsd ki a **candies** nevű függvényt az alábbiak szerint:
 ## Bemeneti formátum:
 1. Az első sor tartalmaz egy egész számot, **n**-t, amely a gyerekek számát jelöli.  
 2. A következő **n** sor mindegyike tartalmaz egy egész számot, amely a gyerekek adott helyen lévő pontszámát jelzi.
+
+## Megoldás
+
+Az ***src/main*** könyvtár tartalmazza a megoldás forráskódját. Az ***src/test*** pedig a teszteseteket.
+
+## Megoldó algoritmus
+
+1. Inicializálás:
+Minden gyerek kap 1 cukorkát kezdetben, mert mindenkinek legalább egyet kell kapnia.
+
+2. Bejárás előről:
+Haladjunk balról jobbra.
+Ha az aktuális gyerek pontszáma magasabb, mint az előző gyereké, akkor egy cukorkával többet kap, mint az előző.
+
+3. Bejárás visszafelé:
+Haladjunk jobbról balra.
+Ha az aktuális gyerek pontszáma magasabb, mint a következő gyereké, biztosítsuk, hogy több cukorkát kapjon, mint a következő, a cukorkaszám frissítésével.
+
+4. Összes cukorka:
+Adjuk össze a cukorkák számát, hogy megkapjuk a szükséges minimális cukorkák számát.
