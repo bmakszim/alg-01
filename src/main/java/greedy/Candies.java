@@ -6,11 +6,45 @@ import java.util.stream.*;
 
 public class Candies {
     public static void main(String[] args) throws IOException {
+        var arr = ReadInput();
+        long result = solve(arr.size(), arr);
+
+        System.out.println(result);
+    }
+
+    public static long solve(int n, List<Integer> arr) {
+        int[] candies = new int[n];
+        Arrays.fill(candies, 1); // Give each child at least one candy
+
+        // Forward pass: ensure each child has more candies than the previous one if their rating is higher
+        for (int i = 1; i < n; i++) {
+            if (arr.get(i) > arr.get(i - 1)) {
+                candies[i] = candies[i - 1] + 1;
+            }
+        }
+
+        // Backward pass: ensure each child has more candies than the next one if their rating is higher
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr.get(i) > arr.get(i + 1)) {
+                candies[i] = Math.max(candies[i], candies[i + 1] + 1);
+            }
+        }
+
+        // Calculate the total candies
+        int totalCandies = 0;
+        for (int candy : candies) {
+            totalCandies += candy;
+        }
+
+        return totalCandies;
+    }
+
+    private static List<Integer> ReadInput() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> arr = IntStream.range(0, n).mapToObj(_ -> {
+        return IntStream.range(0, n).mapToObj(_ -> {
                     try {
                         return bufferedReader.readLine().replaceAll("\\s+$", "");
                     } catch (IOException ex) {
@@ -20,13 +54,5 @@ public class Candies {
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .toList();
-
-        long result = candies(n, arr);
-
-        System.out.println(result);
-    }
-
-    public static long candies(int n, List<Integer> arr) {
-        return 0;
     }
 }
