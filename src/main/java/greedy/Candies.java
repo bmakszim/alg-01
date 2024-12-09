@@ -13,7 +13,7 @@ public class Candies {
     }
 
     public static long solve(int n, List<Integer> arr) {
-        int[] candies = new int[n];
+        long[] candies = new long[n];
         Arrays.fill(candies, 1); // Give each child at least one candy
 
         // Forward pass: ensure each child has more candies than the previous one if their rating is higher
@@ -31,8 +31,8 @@ public class Candies {
         }
 
         // Calculate the total candies
-        int totalCandies = 0;
-        for (int candy : candies) {
+        long totalCandies = 0;
+        for (long candy : candies) {
             totalCandies += candy;
         }
 
