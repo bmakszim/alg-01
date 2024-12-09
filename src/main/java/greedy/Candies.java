@@ -7,12 +7,12 @@ import java.util.stream.*;
 public class Candies {
     public static void main(String[] args) throws IOException {
         var arr = ReadInput();
-        long result = solve(arr.size(), arr);
+        long result = candies(arr.size(), arr);
 
         System.out.println(result);
     }
 
-    public static long solve(int n, List<Integer> arr) {
+    public static long candies(int n, List<Integer> arr) {
         long[] candies = new long[n];
         Arrays.fill(candies, 1); // Give each child at least one candy
 
